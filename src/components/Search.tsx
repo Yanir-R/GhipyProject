@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { apiKey } from '../api';
+
+import { apiKey, baseApi } from '../api';
+
 
 
 export const Search: React.FC = () => {
     const [search, setSearch] = useState('');
-let query :string;
+    let query = 'sticker';
+    let limit = 25;
+    let endPoint = `${baseApi}?api_key=${apiKey}q=${encodeURI(query)}limit=${limit}}`;
+    let fetchData = fetch(endPoint)
+
+ 
     useEffect(()=>{
-        fetch(`api.giphy.com/v1/stickers/search?api_key=${apiKey}${query}`)
+        fetchData
         .then(res => res.json())
-        .then(data => console.log(data));
+        .then(data => console.log(data))
+        .catch(error => console.log(error))
+
 
     }, [search])
 
@@ -17,10 +26,12 @@ let query :string;
             <input type="text"
                 placeholder="Enter Sticker Name"
                 onChange={(e) => setSearch(e.target.value)}
-                // value={search}
+
+                value={search}
                 onClick={()=> console.log(search)}
             />
-            {/* <button onClick={()=> console.log(search) }>Search</button> */}
+            <button onClick={()=> console.log(search) }>Search</button>
+
 
         </>
     )
