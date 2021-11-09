@@ -1,21 +1,9 @@
 import React, { useState } from 'react';
-import { apiKey, baseApi } from '../api';
+import { api } from '../api';
 
 export const Search: React.FC = () => {
     const [search, setSearch] = useState('');
-    let query = search;
-    let limit = 25;
-    // let rating = ["g", "pg", "pg-13", "r"];
-    let endPoint = `${baseApi}?api_key=${apiKey}&q=${query}&limit=${limit}`;
-    let fetchData = fetch(endPoint)
-
-    function callAPI() {
-        fetchData
-            .then(res => res.json()
-                .then(data => console.log('Giphy Stickers:', data))
-                .catch(error => console.log(error)))
-    }
-
+    let [limit, setLimit] = useState(25)
     return (
         <>
             <input
@@ -25,7 +13,7 @@ export const Search: React.FC = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
             />
-            <button onClick={() => callAPI()}>Search</button>
+            <button onClick={() => api.searchForStickerList(search, limit)}>Search</button>
         </>
     )
 }

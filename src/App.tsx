@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css';
 import { BazingaLogo } from './components/bazingaLogo';
 import { Search } from './components/Search';
+import { StickerCard } from './components/stickerCard';
 
 
 
@@ -14,7 +15,8 @@ function App() {
       </header>
       <BazingaLogo />
       <div className="searchBar">
-      <Search/>
+        <Search />
+        <StickerCard />
       </div>
     </div>
   </>
