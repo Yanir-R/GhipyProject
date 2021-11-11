@@ -1,13 +1,12 @@
-import React from "react";
+import React from 'react'
+import { Sticker } from '../react-app-env'
 
-interface stickerCardProps {
 
-}
-
-export const StickerCard: React.FC<stickerCardProps> = () => {
-
+export const StickerCard: React.FC<Sticker> = (sticker) => {
     return (
-        <div> hello</div>
-
+        <>
+            <h1>sticker card </h1>
+           <img src="" alt="" /> {sticker.url} 
+        </>
     );
 }
