@@ -18,8 +18,8 @@ export const App: React.FC = () => {
       <BazingaLogo />
       <div className="searchBar">
         <Search />
-        <StickyCardList stickers={data} />
-     
+        <StickyCardList />
+
       </div>
     </div>
   </>
