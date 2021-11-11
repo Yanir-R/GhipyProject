@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react'
 import './App.css';
+import { BazingaLogo } from './components/bazingaLogo';
+import { Search } from './components/Search';
+import { StickerCard } from './components/stickerCard';
+import { StickyCardList } from './components/stickyCardList';
+import { Sticker } from './react-app-env'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+export const App: React.FC = () => {
+  const [data, setData] = useState<Sticker[]>([])
+
+  return <>
+    <div>
+      <header >
+        Header
       </header>
+      <BazingaLogo />
+      <div className="searchBar">
+        <Search />
+        <StickyCardList />
+
+      </div>
     </div>
-  );
+  </>
 }
 
 export default App;
+

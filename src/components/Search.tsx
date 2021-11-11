@@ -1,27 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { apiKey } from '../api';
-
+import React, { useState } from 'react';
+import { api } from '../api';
 
 export const Search: React.FC = () => {
     const [search, setSearch] = useState('');
-let query :string;
-    useEffect(()=>{
-        fetch(`api.giphy.com/v1/stickers/search?api_key=${apiKey}${query}`)
-        .then(res => res.json())
-        .then(data => console.log(data));
-
-    }, [search])
-
+    let [limit, setLimit] = useState(25)
     return (
         <>
-            <input type="text"
+            <input
+                type="text"
+                autoComplete='off'
                 placeholder="Enter Sticker Name"
+                value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                // value={search}
-                onClick={()=> console.log(search)}
             />
-            {/* <button onClick={()=> console.log(search) }>Search</button> */}
-
+            <button onClick={() => api.searchForStickerList(search, limit)}>Search</button>
         </>
     )
 }
