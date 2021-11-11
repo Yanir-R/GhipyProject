@@ -11,6 +11,7 @@ export const App: React.FC = () => {
   const [data, setData] = useState<Sticker[]>([])
 
   return <>
+  
     <div>
       <header >
         Header
