@@ -1,34 +1,44 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { api } from '../api';
 import { Sticker } from '../react-app-env'
 import { StickerCard } from './stickerCard';
 
 
-export const StickyCardList: React.FC<{ stickers: Sticker[] }> = ({ stickers }) => {
-    const [search, setSearch] = useState('');
-    const [tag] = useState('')
+export const StickyCardList: React.FC = () => {
+    const stringifyData = (data: { data: string | null; }) => JSON.stringify(data, null, 2)
+    const initialData = stringifyData({ data: null })
+    const loadingData = stringifyData({ data: 'loading...' })
+    const [data, setData] = useState(initialData)
+
+    const [sticker, setSticker] = useState('')
+    const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        const fetchData = () => {
+            setLoading(true)
+            const uri = `https://api.giphy.com/v1/gifs/?gif_id=${sticker} `
+            fetch(uri)
+                .then(res => res.json())
+                .then(({ results }) => {
+                    setLoading(false)
+                    const { url } = results[0]
+                    const dataVal = stringifyData({
+                        ...url
+                    })
+                    setData(dataVal)
+                })
+        }
+        fetchData()
+    }, [sticker])
 
     return (
         <div>
-            <input
-                type="text"
-                autoComplete='off'
-                placeholder="Enter Sticker Name"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-            />
-            <button onClick={() => api.stickersList(search, tag)}>Click To see card</button>
-            <ul>
-                {stickers.map((sticker: Sticker) => (
-                    <StickerCard
-                        id={sticker.id}
-                        title={sticker.title}
-                        type={sticker.type}
-                        embed_url={sticker.embed_url}
-                    />
-                ))}
-            </ul>
-
+            <button
+                onClick={() => setSticker('sticker')}
+            ></button>
+            <section>
+                {loading ? <pre> {loadingData} </pre> : <pre>{data}</pre>}
+            </section>
 
         </div>
     );
