@@ -1,27 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css';
-import { BazingaLogo } from './components/bazingaLogo';
-import { Search } from './components/Search';
-import { StickerCard } from './components/stickerCard';
-import { StickyCardList } from './components/stickyCardList';
-import { Sticker } from './react-app-env'
+import { Gif } from './components/Gif';
+import { GiphySearch } from './components/GiphySearch';
 
 
 export const App: React.FC = () => {
-  const [data, setData] = useState<Sticker[]>([])
-
   return <>
-  
     <div>
-      <header >
-        Header
-      </header>
-      <BazingaLogo />
       <div className="searchBar">
-        <Search />
-        <StickyCardList />
-
+        <GiphySearch />
       </div>
+      <Gif url={"https://giphy.com/embed/GFLIjIaiAL0kw"} />
     </div>
   </>
 }

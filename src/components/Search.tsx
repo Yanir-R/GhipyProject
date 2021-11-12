@@ -3,7 +3,7 @@ import { api } from '../api';
 
 export const Search: React.FC = () => {
     const [search, setSearch] = useState('');
-    let [limit, setLimit] = useState(25)
+    // let [limit, setLimit] = useState(25)
     return (
         <>
             <input
@@ -13,7 +13,7 @@ export const Search: React.FC = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
             />
-            <button onClick={() => api.searchForStickerList(search, limit)}>Search</button>
+            <button onClick={() => api.searchForGiphyList()}>Search</button>
         </>
     )
 }

@@ -1,27 +1,25 @@
-import { Sticker } from "./react-app-env";
-
 export const apiKey = 'wpmzNB6ec7T0FhncGGtQ6AXUY4UYlKbn';
-export const baseApi = 'https://api.giphy.com/v1/stickers/search';
-export const baseApiList = 'https://giphy.com/embed'
-
-
+export const baseSearchApi = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=20&q=`
 
 
 export const api = {
 
-    searchForStickerList: (search: string, limit: number) => {
-        return fetch(`${baseApi}?api_key=${apiKey}&q=${search}&limit=${limit}`)
-            .then(res => res.json()
-                .then(data => console.log('Giphy SearchAPI Stickers:', data))
-                .catch(error => console.log(error)))
+    searchForGiphyList: async () => {
+        const res = await fetch(`${baseSearchApi}`);
+        try {
+            const data = await res.json();
+            return console.log('Giphy SearchAPI:', data);
+        } catch (error) {
+            return console.log(error);
+        }
     },
 
-    stickersList: (query: string) => {
-        return fetch(`${baseApiList}?q=${query}&api_key=${apiKey}`)
-            .then(res => res.json()
-                .then(sticker => console.log('Giphy List Stickers:', sticker))
-                .catch(error => console.log(error)))
-    }
+    // stickersList: (query: string) => {
+    //     return fetch(`${baseApiList}?q=${query}&api_key=${apiKey}`)
+    //         .then(res => res.json()
+    //             .then(sticker => console.log('Giphy List Stickers:', sticker))
+    //             .catch(error => console.log(error)))
+    // }
 
 }
 

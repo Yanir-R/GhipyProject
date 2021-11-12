@@ -1,10 +1,11 @@
 import React from 'react';
+import { Sticker } from '../react-app-env';
 
-export const BazingaLogo: React.FC = () => {
+export const Gif: React.FC<Sticker> = ({ url }) => {
     return (
         <div className="bazingaPicture">
             <iframe title="This Is Giphy Sticker Title"
-                src="https://giphy.com/embed/GFLIjIaiAL0kw"
+                src={url}
                 width="480" height="480" frameBorder="0"
                 allowFullScreen >
             </iframe><p>
@@ -12,5 +13,6 @@ export const BazingaLogo: React.FC = () => {
                     Via PDD
                 </a></p>
         </div>
+        
     )
 }
