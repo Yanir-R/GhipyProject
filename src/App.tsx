@@ -10,7 +10,6 @@ export const App: React.FC = () => {
       <div className="searchBar">
         <GiphySearch />
       </div>
-      <Gif url={"https://giphy.com/embed/GFLIjIaiAL0kw"} />
     </div>
   </>
 }

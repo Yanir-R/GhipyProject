@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { baseSearchApi } from '../api';
 import '../App.css';
+import { Gif } from './Gif';
 
 export const GiphySearch: React.FC<any> = () => {
     let [search, setSearch] = useState("");
@@ -56,7 +57,7 @@ export const GiphySearch: React.FC<any> = () => {
                                 gifs.map((gif) => {
                                     return (
                                         <div className="item">
-                                            <img alt='Gif' src={gif} />
+                                            <Gif url={gif} />
                                         </div>
                                     )
                                 })
