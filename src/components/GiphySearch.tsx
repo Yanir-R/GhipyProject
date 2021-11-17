@@ -2,11 +2,19 @@ import React, { useState } from 'react'
 import { baseSearchApi } from '../api';
 import '../App.css';
 import { Gif } from './Gif';
+import Paginate from './Paginate';
 
 export const GiphySearch: React.FC<any> = () => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(5);
+    const indexOfLastItem = currentPage * itemsPerPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
     let [search, setSearch] = useState("");
     let [gifs, setGifs] = useState([]);
     let [loadingState, setLoadingState] = useState(false);
+    // let [isError, setIsError] = useState(false);
+    const currentItems = gifs.slice(indexOfFirstItem, indexOfLastItem);
 
     let searchGif = () => {
         if (search.length > 0) {
@@ -27,6 +35,10 @@ export const GiphySearch: React.FC<any> = () => {
                     setLoadingState(false);
                 })
         }
+    }
+
+    const pageSelected = (pageNumber: number) => {
+        setCurrentPage(pageNumber)
     }
 
     return (
@@ -52,23 +64,30 @@ export const GiphySearch: React.FC<any> = () => {
                             </div>
                         </div>
                     ) : (
-                        <div className="list">
-                            {
-                                gifs.map((gif) => {
+                        <>
+                            <Paginate
+                                pageSelected={pageSelected}
+                                currentPage={currentPage}
+                                itemsPerPage={itemsPerPage}
+                                totalItems={gifs.length} />
+                            <div className="list">
+                                {currentItems.map((gif) => {
                                     return (
                                         <div className="item">
                                             <Gif url={gif} />
                                         </div>
-                                    )
-                                })
-                            }
-                        </div>
+                                    );
+                                })}
+                            </div>
+                        </>
                     )
                 }
             </div>
         </div>
 
     )
-
 }
+
+
+
 

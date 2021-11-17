@@ -1,5 +1,5 @@
 export const apiKey = 'wpmzNB6ec7T0FhncGGtQ6AXUY4UYlKbn';
-export const baseSearchApi = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=20&q=`
+export const baseSearchApi = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=100&q=`
 
 
 export const api = {

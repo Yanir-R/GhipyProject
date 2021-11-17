@@ -1,14 +1,35 @@
-
-.bazingaPicture {
-  text-align: center;
+nav {
+  display: flex;
+  justify-content: center;
 }
+ul.pagination {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+ul.pagination li {display: inline;}
+
+ul.pagination li a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+ul.pagination li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+ul.pagination li a:hover:not(.active) {background-color: #ddd;}
 * {
   margin:0px;
   padding:0px;
   box-sizing:border-box;
 }
 body {
-  background:#222;
+  /* background:#222; */
   font-family:"Raleway",sans-serif;
 }
 .header {
