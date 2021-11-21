@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { api } from '../api';
+import React from 'react';
 
-export const Search: React.FC = () => {
-    const [search, setSearch] = useState('');
-    let [limit, setLimit] = useState(25)
+export const Search: React.FC<any> = ({ search, setSearch, searchGif, currentPage }) => {
+
     return (
-        <>
+        <div>
             <input
                 type="text"
                 autoComplete='off'
-                placeholder="Enter Sticker Name"
+                placeholder="Enter Sticker\Gif You Want To See"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
             />
-            <button onClick={() => api.searchForStickerList(search, limit)}>Search</button>
-        </>
+            <button onClick={(() => searchGif(currentPage))}>
+                Search
+            </button>
+        </div>
     )
 }

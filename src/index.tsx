@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { GiphySearchAPI } from './GiphySearchAPI';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <GiphySearchAPI />
   </React.StrictMode>,
   document.getElementById('root')
 );
