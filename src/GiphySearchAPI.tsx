@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { api, baseSearchApi } from '../api';
-import '../App.css';
-import { Gif } from './Gif';
-import Paginate from './Paginate';
+import { api } from './api';
+import './GiphySearchAPI.css';
+import { GifList } from './components/GifList';
+import Paginate from './components/Paginate';
+import { Search } from './components/Search';
 
-export const GiphySearch: React.FC<any> = () => {
+export const GiphySearchAPI: React.FC<any> = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
     const [itemsTotal, setItemsTotal] = useState(0)
@@ -12,8 +13,6 @@ export const GiphySearch: React.FC<any> = () => {
     let [search, setSearch] = useState("");
     let [gifs, setGifs] = useState([]);
     let [loadingState, setLoadingState] = useState(false);
-
-    // let [isError, setIsError] = useState(false);
 
     let searchGif = (pageNumber: number) => {
         if (search.length > 0) {
@@ -43,17 +42,12 @@ export const GiphySearch: React.FC<any> = () => {
     return (
         <div>
             <div className="header">
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Search GIF"
-                        value={search}
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                    <button onClick={(() => searchGif(currentPage))}>
-                        Search
-                    </button>
-                </div>
+                <Search
+                    search={search}
+                    setSearch={setSearch}
+                    searchGif={searchGif}
+                    currentPage={currentPage}
+                />
             </div>
             <div className="result">
                 {
@@ -65,19 +59,15 @@ export const GiphySearch: React.FC<any> = () => {
                     ) : (
                         <>
                             <Paginate
-
                                 pageSelected={pageSelected}
                                 currentPage={currentPage}
                                 itemsPerPage={itemsPerPage}
                                 totalItems={itemsTotal} />
+
                             <div className="list">
-                                {gifs.map((gif) => {
-                                    return (
-                                        <div className="item">
-                                            <Gif url={gif} />
-                                        </div>
-                                    );
-                                })}
+
+                                <GifList gifs={gifs} />
+
                             </div>
                         </>
                     )

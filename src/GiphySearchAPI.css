@@ -1,7 +1,37 @@
+body {
+  background:#222;
+  font-family:"Raleway",sans-serif;
+}
 nav {
   display: flex;
   justify-content: center;
 }
+
+.header {
+  width:100%;
+  padding:20px;
+  display:flex;
+  justify-content:center;
+}
+.header > div {
+  border:10px solid #aaa;
+}
+.header > div input {
+  padding:10px;
+  width:400px;
+  border:none;
+  outline:none;
+}
+.header > div button {
+  height:100%;
+  border-radius:0px;
+  border:none;
+  padding:0px 10px; 
+  background:#00acee;
+  color:#f5f5f5;
+  font-weight:600;
+}
+
 ul.pagination {
   display: inline-block;
   padding: 0;
@@ -28,34 +58,7 @@ ul.pagination li a:hover:not(.active) {background-color: #ddd;}
   padding:0px;
   box-sizing:border-box;
 }
-body {
-  /* background:#222; */
-  font-family:"Raleway",sans-serif;
-}
-.header {
-  width:100%;
-  padding:20px;
-  display:flex;
-  justify-content:center;
-}
-.header > div {
-  border:10px solid #aaa;
-}
-.header > div input {
-  padding:10px;
-  width:400px;
-  border:none;
-  outline:none;
-}
-.header > div button {
-  height:100%;
-  border-radius:0px;
-  border:none;
-  padding:0px 10px; 
-  background:#00acee;
-  color:#f5f5f5;
-  font-weight:600;
-}
+
 .result {
   padding:20px;
 }
