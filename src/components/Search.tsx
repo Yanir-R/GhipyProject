@@ -13,7 +13,8 @@ export const Search: React.FC = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
             />
-            <button onClick={() => api.searchForGiphyList()}>Search</button>
+            <button onClick={() => api}>Search</button>
         </>
     )
 }
+

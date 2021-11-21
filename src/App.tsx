@@ -7,9 +7,9 @@ import { GiphySearch } from './components/GiphySearch';
 
 export const App: React.FC = () => {
   return <>
-    <div>
-      <GiphySearch />
-    </div>
+
+    <GiphySearch />
+
   </>
 }
 

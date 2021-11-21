@@ -1,34 +1,32 @@
 import React, { useState } from 'react'
-import { baseSearchApi } from '../api';
+import { api, baseSearchApi } from '../api';
 import '../App.css';
 import { Gif } from './Gif';
 import Paginate from './Paginate';
 
 export const GiphySearch: React.FC<any> = () => {
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage, setItemsPerPage] = useState(5);
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const itemsPerPage = 5;
+    const [itemsTotal, setItemsTotal] = useState(0)
 
     let [search, setSearch] = useState("");
     let [gifs, setGifs] = useState([]);
     let [loadingState, setLoadingState] = useState(false);
-    // let [isError, setIsError] = useState(false);
-    const currentItems = gifs.slice(indexOfFirstItem, indexOfLastItem);
 
-    let searchGif = () => {
+    // let [isError, setIsError] = useState(false);
+
+    let searchGif = (pageNumber: number) => {
         if (search.length > 0) {
             setLoadingState(true);
-            fetch(baseSearchApi + search)
-                .then((res) => {
-                    setLoadingState(false);
-                    return res.json();
-                })
+            api.searchForGiphyList(search, itemsPerPage, (pageNumber - 1) * itemsPerPage)
                 .then((result) => {
                     console.log(result);
+                    setLoadingState(false);
                     setGifs(result.data.map((gif: any) => {
+
                         return gif.images.fixed_height.url;
                     }))
+                    setItemsTotal(result.pagination.total_count)
                 })
                 .catch(() => {
                     alert("Something went wrong");
@@ -39,6 +37,7 @@ export const GiphySearch: React.FC<any> = () => {
 
     const pageSelected = (pageNumber: number) => {
         setCurrentPage(pageNumber)
+        searchGif(pageNumber)
     }
 
     return (
@@ -51,7 +50,7 @@ export const GiphySearch: React.FC<any> = () => {
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
-                    <button onClick={searchGif}>
+                    <button onClick={(() => searchGif(currentPage))}>
                         Search
                     </button>
                 </div>
@@ -66,12 +65,13 @@ export const GiphySearch: React.FC<any> = () => {
                     ) : (
                         <>
                             <Paginate
+
                                 pageSelected={pageSelected}
                                 currentPage={currentPage}
                                 itemsPerPage={itemsPerPage}
-                                totalItems={gifs.length} />
+                                totalItems={itemsTotal} />
                             <div className="list">
-                                {currentItems.map((gif) => {
+                                {gifs.map((gif) => {
                                     return (
                                         <div className="item">
                                             <Gif url={gif} />
