@@ -58,17 +58,21 @@ export const GiphySearchAPI: React.FC<any> = () => {
                         </div>
                     ) : (
                         <>
-                            <Paginate
-                                pageSelected={pageSelected}
-                                currentPage={currentPage}
-                                itemsPerPage={itemsPerPage}
-                                totalItems={itemsTotal} />
 
                             <div className="list">
 
                                 <GifList gifs={gifs} />
 
                             </div>
+
+                            <Paginate
+                                itemPerPage={itemsPerPage}
+                                pageSelected={pageSelected}
+                                itemsTotal={itemsTotal}
+                                currentPage={currentPage}
+                                setCurrentPage={setCurrentPage}
+
+                            />
                         </>
                     )
                 }
