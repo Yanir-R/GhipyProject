@@ -1,6 +1,6 @@
 export const apiKey = 'wpmzNB6ec7T0FhncGGtQ6AXUY4UYlKbn';
 export const baseSearchApi = 'https://api.giphy.com/v1/gifs/search?api_key=wpmzNB6ec7T0FhncGGtQ6AXUY4UYlKbn&rating=g&lang=en'
-
+export const baseSearchById = 'https://api.giphy.com/v1/gifs'
 
 
 export const api = {
@@ -10,12 +10,24 @@ export const api = {
         const data = await res.json();
         return data
     },
+    getGifById: (gifId: string) => async () => {
 
-    // stickersList: (query: string) => {
-    //     return fetch(`${ baseApiList }?q = ${ query }& api_key=${ apiKey } `)
-    //         .then(res => res.json()
-    //             .then(sticker => console.log('Giphy List Stickers:', sticker))
-    //             .catch(error => console.log(error)))
+        const res = await fetch(`${baseSearchById}/${gifId}?api_key=${apiKey}`)
+        const data = await res.json()
+            .then(gifId => console.log('Gif Id:', gifId))
+            .catch(error => console.log(error))
+
+        return data
+    }
+
+    // getGifById: async (id: any) => {
+
+    //     const res = await fetch(`${baseSearchById}/${id}?api_key=${apiKey}`)
+    //     const data = await res.json()
+    //         .then(gifId => console.log('Gif Id:', gifId))
+    //         .catch(error => console.log(error))
+
+    //     return data
     // }
 
 }

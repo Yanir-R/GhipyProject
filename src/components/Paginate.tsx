@@ -1,7 +1,7 @@
 
 import '../GiphySearchAPI.css';
 
-function Paginate({ props, itemsTotal, pageSelected, currentPage, setCurrentPage, itemPerPage }: any) {
+function Paginate({ itemsTotal, pageSelected, currentPage }: any) {
     let gifs = [];
     let leftSide = currentPage - 2;
     if (leftSide <= 0) leftSide = 1;
@@ -15,7 +15,6 @@ function Paginate({ props, itemsTotal, pageSelected, currentPage, setCurrentPage
             </div>,
         );
     }
-
 
     const nextPage = () => {
         if (currentPage < itemsTotal) {
@@ -41,11 +40,9 @@ function Paginate({ props, itemsTotal, pageSelected, currentPage, setCurrentPage
             </div>
         </div >
 
-
     );
     return (paginationRender);
 }
-
 
 
 export default Paginate
