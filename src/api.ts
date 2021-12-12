@@ -10,7 +10,7 @@ export const api = {
         const data = await res.json();
         return data
     },
-    getGifById: (gifId: string) => async () => {
+    getGifById: async (gifId: string) => {
 
         const res = await fetch(`${baseSearchById}/${gifId}?api_key=${apiKey}`)
         const data = await res.json()
