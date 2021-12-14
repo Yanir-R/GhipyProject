@@ -22,8 +22,10 @@ export const GiphySearchAPI: React.FC<any> = () => {
                     console.log(result);
                     setLoadingState(false);
                     setGifs(result.data.map((gif: any) => {
-
-                        return gif.images.fixed_height.url;
+                        return {
+                            url: gif.images.fixed_height.url,
+                            id: gif.id
+                        };
                     }))
                     setItemsTotal(result.pagination.total_count)
                 })
@@ -61,7 +63,9 @@ export const GiphySearchAPI: React.FC<any> = () => {
 
                             <div className="list">
 
-                                <GifList gifs={gifs} />
+                                <GifList
+                                    gifs={gifs}
+                                />
 
                             </div>
 
@@ -71,7 +75,6 @@ export const GiphySearchAPI: React.FC<any> = () => {
                                 itemsTotal={itemsTotal}
                                 currentPage={currentPage}
                                 setCurrentPage={setCurrentPage}
-
                             />
                         </>
                     )

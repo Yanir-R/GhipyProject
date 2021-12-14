@@ -2,7 +2,8 @@
 
 
 export interface Sticker {
-    url: string
+    url: string,
+    id: string
 
 
 }

@@ -1,7 +1,6 @@
 export const apiKey = 'wpmzNB6ec7T0FhncGGtQ6AXUY4UYlKbn';
 export const baseSearchApi = 'https://api.giphy.com/v1/gifs/search?api_key=wpmzNB6ec7T0FhncGGtQ6AXUY4UYlKbn&rating=g&lang=en'
-export const baseSearchById = 'https://api.giphy.com/v1/gifs'
-
+export const baseSearchById = `https://api.giphy.com/v1/gifs?api_key=${apiKey}`
 
 export const api = {
 
@@ -10,26 +9,11 @@ export const api = {
         const data = await res.json();
         return data
     },
-    getGifById: async (gifId: string) => {
-
-        const res = await fetch(`${baseSearchById}/${gifId}?api_key=${apiKey}`)
-        const data = await res.json()
-            .then(gifId => console.log('Gif Id:', gifId))
-            .catch(error => console.log(error))
-
+    getGifById: async (ids: any) => {
+        const res = await fetch(`${baseSearchById}&ids=${ids}`)
+        const data = res.json()
         return data
     }
-
-    // getGifById: async (id: any) => {
-
-    //     const res = await fetch(`${baseSearchById}/${id}?api_key=${apiKey}`)
-    //     const data = await res.json()
-    //         .then(gifId => console.log('Gif Id:', gifId))
-    //         .catch(error => console.log(error))
-
-    //     return data
-    // }
-
 }
 
 
