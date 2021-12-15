@@ -1,47 +1,51 @@
-# Getting Started with Create React App
+![image](https://user-images.githubusercontent.com/67261194/146046998-72851860-5cde-4178-be43-c20bf9ee8762.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Get Started
+ #### Clone the repo:
+<code> git clone https://github.com/Yanir-R/GhipyProject.git </code>
 
-## Available Scripts
+#### Install dependencies :
+<code> npm i </code>
 
-In the project directory, you can run:
+#### Run the server:
+<code> npm start </code>
 
-### `yarn start`
+#### Open your browser at:
+<code>http://localhost:3000/</code>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Table of Contents [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [Introduction](#Introduction)
+- [Features](#features)
+- [Instructions](#Instructions)
+- [Technologies](#Technologies)
+- [Motivation](#Motivation)
 
-### `yarn test`
+## Introduction
+This is tiny app for search & view Gifs from [Giphy Api](https://developers.giphy.com/), built with React & CSS3. & React Router v6 library
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## Features
+- [x] Search for gifs.
+- [x] Pagination that display 5 gifs pair page
+- [x] Shows details about each Gif  
+- [X] Responsive Design
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Instructions
+- Initially the application with <code>npm start</code>
+- insert input at search field to see related Gif's & click on the <code>Serach Button</code> <sub><sup>5 Gifs will appear </sub></sup>
+- Switch pages to see more results that related to your search value.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Motivation
+I created the project to test my abilities without library help.
+I Wanted to create Pagination, API calls with only ReactJS - and i succeed (: 
+Learnd alot! 
 
-### `yarn eject`
+## Technologies
+[<img src=https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg width="40" height="40"/>](https://reactjs.org/)
+[<img src=https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg width="40" height="40" />](https://en.wikipedia.org/wiki/CSS)
+[<img src=https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg width="40" height="40" />](https://www.typescriptlang.org/)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-# GhipyProject
+## License
+MIT © [Yanir-r]()
